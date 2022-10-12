@@ -13,18 +13,8 @@ out/
 allure-results/
 .allure/
 
-# Specific files
-src/main/resources/authorization.json
-
 # Response logs
-src/test/resources/test_data/cars/*Response.json
-src/test/resources/test_data/coupons_park/*.json
-src/test/resources/test_data/coupons_rent/*.json
-src/test/resources/test_data/coupons_ride/*.json
-src/test/resources/test_data/invoices/*.json
-src/test/resources/test_data/users/*.json
-src/test/resources/test_data/tickets/*.json
-src/test/resources/test_data/accessToken/*.json
+src/test/resources/test_data/
 
 # Compiled class file
 *.class
@@ -48,7 +38,6 @@ src/test/resources/test_data/accessToken/*.json
 *.zip
 *.tar.gz
 *.rar
-!jmeter.zip
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
