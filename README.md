@@ -2,6 +2,29 @@
 
 ## Automation framework (ATF)
 
+### Quick Automation Start
+
+1) Cucumber feature:</br >
+   `modules/amazon/ui/src/test/resources/features/*.feature`
+2) Gradle task:</br >
+   Open terminal in root project folder
+
+```
+gradle :modules:amazon:ui:tests 
+```
+
+Then you will be able to Generate Allure
+
+```
+gradle :modules:amazon:ui:allureReport
+gradle :modules:amazon:ui:{allure_env,allureReport}
+```
+
+Run and Generate Allure
+```
+gradle :modules:amazon:ui:{clean,tests,allure_env,allureReport} -Dthreads=1 -Dbrowser=chrome -Dbrowser.resolution='1920x1080'
+```
+
 ### Dependencies
 
 | Automation Feature (Tool) |                             Links                              |
@@ -23,31 +46,7 @@
 | `browser`            | `chrome`                         |                     Configure browser                     |
 | `browser.resolution` | `1366x768`                       |                  Set browser resolution                   |
 | `threads`            | `1`                              |      Number of threads (use with parallel execution)      |
-| `host`               | `https://www.int.free2move.com/` |              Base url for API inside project              |
-| `env`                | `DEV`                            |           Out of date API lib use this variable           |
 
-## How to run test
-
-1) Cucumber feature:</br >
-   `modules/amazon/src/test/resources/features/*.feature`
-2) Gradle task:</br >
-   Open terminal in root project folder
-
-```
-gradle :modules:amazon:tests 
-```
-
-Then you will be able to Generate Allure
-
-```
-gradle :modules:amazon:allureReport
-gradle :modules:amazon:{allure_env,allureReport}
-```
-
-Run and Generate Allure
-```
-gradle :modules:amazon:{clean,tests,allure_env,allureReport} -Dthreads=1 -Dbrowser=chrome -Dbrowser.resolution='1920x1080'
-```
 
 ## Specification
 
@@ -104,23 +103,23 @@ Web Automation: [Amazon](https://www.amazon.in/)
    > Note: Clicking on above URL may redirect you to amazon.com. Change it to amazon.in
 2. Click on the `hamburger menu` in the top left corner.
 
-   ![hamburger-menu.png](hamburger-menu.png)
+   ![hamburger-menu.png](docs/hamburger-menu.png)
 3. Scroll own and then Click on the `TV, Appliances and Electronics` link under `Shop by Department` section.
 
-   ![tv-appliance-electronics.png](tv-appliance-electronics.png)
+   ![tv-appliance-electronics.png](docs/tv-appliance-electronics.png)
 4. Then click on `Televisions` under `Tv, Audio & Cameras` sub section.
 
-   ![televisions.png](televisions.png)
+   ![televisions.png](docs/televisions.png)
 5. Scroll down and filter the results by Brand ‘Samsung’.
 
-   ![samsung.png](samsung.png)
+   ![samsung.png](docs/samsung.png)
 6. Sort the Samsung results with price High to Low.
 
-   ![sort-price-high-to-low.png](sort-price-high-to-low.png)
+   ![sort-price-high-to-low.png](docs/sort-price-high-to-low.png)
 7. Click on the second highest priced item (whatever that maybe at the time of automating).
 8. Switch the Window
 9. Assert that  “About this item” section is present and log this section text to console/report.
 
-   ![about-this-item.png](about-this-item.png)
+   ![about-this-item.png](docs/about-this-item.png)
 
 ## Notes
