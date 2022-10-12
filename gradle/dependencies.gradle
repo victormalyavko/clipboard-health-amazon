@@ -1,0 +1,51 @@
+ext {
+  selenide_selenoid = '2.2.4'
+  commons_lang3 = '3.12.0'
+  rest_assured = '5.1.1'
+  annotations = '19.0.0'
+  commons_io = '2.6'
+  freemarker = '2.3.31'
+  javafaker = '1.0.2'
+  cucumber = '6.11.0'
+  selenide = '6.9.0'
+  jackson = '2.13.3'
+  assertj = '3.23.1'
+  allure = '2.19.0'
+  junit = '4.13.2'
+  json = '20220320'
+  slf4j = '2.0.0'
+  csv = '5.6'
+}
+
+subprojects {
+  repositories {
+    mavenCentral()
+  }
+
+  configurations {
+    cucumberRuntime {
+      extendsFrom testImplementation
+    }
+  }
+
+  dependencies {
+    implementation group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-xml', version: "$jackson"
+    implementation group: 'io.qameta.allure', name: 'allure-cucumber6-jvm', version: "$allure"
+    implementation group: 'io.qameta.allure', name: 'allure-rest-assured', version: "$allure"
+    implementation group: 'io.qameta.allure', name: 'allure-selenide', version: "$allure"
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version: "$commons_lang3"
+    implementation group: 'io.rest-assured', name: 'rest-assured', version: "$rest_assured"
+    implementation group: 'io.cucumber', name: 'cucumber-java', version: "$cucumber"
+    implementation group: 'org.jetbrains', name: 'annotations', version: "$annotations"
+    implementation group: 'org.assertj', name: 'assertj-core', version: "$assertj"
+    implementation group: 'com.codeborne', name: 'selenide', version: "$selenide"
+    implementation group: 'com.opencsv', name: 'opencsv', version: "$csv"
+    implementation group: 'org.json', name: 'json', version: "$json"
+    implementation group: 'junit', name: 'junit', version: "$junit"
+    implementation group: 'org.slf4j', name: 'slf4j-api', version: "$slf4j"
+    implementation group: 'org.slf4j', name: 'slf4j-simple', version: "$slf4j"
+    implementation group: 'commons-io', name: 'commons-io', version: "$commons_io"
+    implementation group: 'com.github.javafaker', name: 'javafaker', version: "$javafaker"
+    implementation group: 'org.freemarker', name: 'freemarker', version: "$freemarker"
+  }
+}

@@ -1,0 +1,57 @@
+# Intellij Idea
+.idea/
+*.iml
+*.iws
+target/
+
+# Gradle
+.gradle/
+build/
+out/
+
+# Allure logs
+allure-results/
+.allure/
+
+# Specific files
+src/main/resources/authorization.json
+
+# Response logs
+src/test/resources/test_data/cars/*Response.json
+src/test/resources/test_data/coupons_park/*.json
+src/test/resources/test_data/coupons_rent/*.json
+src/test/resources/test_data/coupons_ride/*.json
+src/test/resources/test_data/invoices/*.json
+src/test/resources/test_data/users/*.json
+src/test/resources/test_data/tickets/*.json
+src/test/resources/test_data/accessToken/*.json
+
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# Video file
+*.mp4
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+!jmeter.zip
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+# MAC
+.DS_Store/

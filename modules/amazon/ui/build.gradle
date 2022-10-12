@@ -1,0 +1,42 @@
+apply plugin: 'io.qameta.allure'
+
+allure {
+    version = '2.19.0'
+    reportDir = file("$projectDir/build/allure-report")
+}
+
+dependencies {
+    implementation project(':modules:core')
+    implementation group: 'org.selenide', name: 'selenide-selenoid', version: "$selenide_selenoid"
+    implementation group: 'com.codeborne', name: 'selenide-proxy', version: "$selenide"
+}
+
+task allure_env(dependsOn: ['allure_check', 'allure_categories']) {
+    doLast {
+        def workingDir = new File("$projectDir")
+        def result = 'git rev-parse --abbrev-ref HEAD'.execute(null, workingDir)
+        result.waitFor()
+        def gitBranch = result.exitValue() == 0 ? result.text.trim() : "undefined"
+        def allureInfo = [
+                'os'                : System.getProperty('os', 'undefined'),
+                'browser'           : System.getProperty('browser', 'undefined'),
+                'browser.version'   : System.getProperty('browser.version', 'undefined'),
+                'browser.resolution': System.getProperty('browser.resolution', 'undefined'),
+                'cucumber.tags'     : System.getProperty('cucumber.tags', 'undefined'),
+                'selenoid.enable'   : System.getProperty('selenoid.enable', 'undefined'),
+                'host'              : System.getProperty("host", 'undefined'),
+                'threads'           : System.getProperty('threads', '1'),
+                'git.branch'        : gitBranch
+        ]
+        copy {
+            from file("$projectDir/src/test/resources/environment.properties")
+            into file("$projectDir/build/allure-results")
+        }
+        File envs = file("$projectDir/build/allure-results/environment.properties")
+        def allureProps = new Properties()
+        allureProps.load(envs.newDataInputStream())
+        allureProps.putAll(allureInfo)
+        allureProps.store(envs.newWriter(), null)
+        envs.with { it.text = it.readLines().findAll { it }.sort().join('\n') }
+    }
+}

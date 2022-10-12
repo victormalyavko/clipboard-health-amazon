@@ -1,0 +1,3 @@
+rootProject.name = 'clipboard-health-amazon'
+include ':modules:core'
+include ':modules:amazon:ui'

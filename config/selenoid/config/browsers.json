@@ -1,0 +1,72 @@
+{
+  "chrome": {
+    "default": "latest",
+    "versions": {
+      "latest": {
+        "image": "selenoid/vnc_chrome:105.0",
+        "port": "4444",
+        "path": "/"
+      },
+      "96": {
+        "image": "selenoid/vnc:chrome_96.0",
+        "port": "4444",
+        "path": "/"
+      },
+      "arm64": {
+        "image": "dumbdumbych/selenium_vnc_chrome_arm64:91.0.b",
+        "port": "4444",
+        "path": "/"
+      }
+    }
+  },
+  "firefox": {
+    "default": "latest",
+    "versions": {
+      "latest": {
+        "image": "selenoid/vnc_firefox:104.0",
+        "port": "4444",
+        "path": "/wd/hub"
+      },
+      "93": {
+        "image": "selenoid/vnc:firefox_93.0",
+        "port": "4444",
+        "path": "/wd/hub"
+      }
+    }
+  },
+  "opera": {
+    "default": "latest",
+    "versions": {
+      "latest": {
+        "image": "selenoid/vnc_opera:88.0",
+        "port": "4444",
+        "path": "/wd/hub"
+      }
+    }
+  },
+  "safari": {
+    "default": "latest",
+    "versions": {
+      "latest": {
+        "image": "browsers/safari:15.0",
+        "port": "4444",
+        "path": "/"
+      }
+    }
+  },
+  "edge": {
+    "default": "latest",
+    "versions": {
+      "latest": {
+        "image": "browsers/edge:104.0",
+        "port": "4444",
+        "path": "/"
+      },
+      "95": {
+        "image": "browsers/edge:95.0",
+        "port": "4444",
+        "path": "/"
+      }
+    }
+  }
+}

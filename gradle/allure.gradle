@@ -1,0 +1,37 @@
+import groovy.json.JsonSlurper
+
+subprojects {
+
+    task allure_categories(dependsOn: ['allure_check']) {
+        doLast{
+            copy {
+                from file("$projectDir/src/test/resources/categories.json")
+                into file("$projectDir/build/allure-results")
+            }
+        }
+    }
+
+    task allure_quality_gate {
+        doLast {
+            def allure_folder = new File("$projectDir/build/allure-report")
+            if (!allure_folder.exists()) {
+                throw new GradleException("Retry task has been failed")
+            }
+            def str = new File("$projectDir/build/allure-report/widgets/summary.json").text
+            def slurper = new JsonSlurper().parseText(str)
+            def quality_gate_match = 0 < slurper.statistic.failed
+            if (quality_gate_match) {
+                throw new GradleException("Retry task has been failed")
+            }
+        }
+    }
+
+    task allure_check {
+        doLast{
+            def directory = new File("$projectDir/build/allure-results")
+            if (!directory.exists()) {
+                mkdir "$projectDir/build/allure-results"
+            }
+        }
+    }
+}
