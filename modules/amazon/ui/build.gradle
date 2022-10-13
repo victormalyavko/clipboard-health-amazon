@@ -19,12 +19,11 @@ task allure_env(dependsOn: ['allure_check', 'allure_categories']) {
         def gitBranch = result.exitValue() == 0 ? result.text.trim() : "undefined"
         def allureInfo = [
                 'os'                : System.getProperty('os', 'undefined'),
-                'browser'           : System.getProperty('browser', 'undefined'),
-                'browser.version'   : System.getProperty('browser.version', 'undefined'),
-                'browser.resolution': System.getProperty('browser.resolution', 'undefined'),
+                'browser'           : System.getProperty('browser', 'chrome'),
+                'browser.version'   : System.getProperty('browser.version', 'latest'),
+                'browser.resolution': System.getProperty('browser.resolution', '1366x768'),
                 'cucumber.tags'     : System.getProperty('cucumber.tags', 'undefined'),
-                'selenoid.enable'   : System.getProperty('selenoid.enable', 'undefined'),
-                'host'              : System.getProperty("host", 'undefined'),
+                'selenoid.enable'   : System.getProperty('selenoid.enable', 'false'),
                 'threads'           : System.getProperty('threads', '1'),
                 'git.branch'        : gitBranch
         ]

@@ -41,7 +41,7 @@ import java.util.logging.Level;
 public class SelenideHook {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(SelenideHook.class);
-    private static final String BROWSER_SIZE = System.getProperty("browser.resolution", "1920x1080");
+    private static final String BROWSER_SIZE = System.getProperty("browser.resolution", "1366x768");
     private static final String BROWSER_NAME = System.getProperty("browser", "chrome");
 
     private static final String SELENOID_REMOTE = System.getProperty("selenoid.remote", "http://127.0.0.1:4444/wd/hub");
