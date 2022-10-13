@@ -1,4 +1,4 @@
-package io.automation.pages.amazon.shops.electronics;
+package io.automation.amazon.shops.electronics.tv;
 
 import com.codeborne.selenide.SelenideElement;
 import org.slf4j.Logger;

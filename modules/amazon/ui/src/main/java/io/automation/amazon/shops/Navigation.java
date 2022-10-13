@@ -1,7 +1,7 @@
-package io.automation.pages.amazon.shops;
+package io.automation.amazon.shops;
 
 import com.codeborne.selenide.SelenideElement;
-import io.automation.pages.amazon.shops.electronics.TVAudioCamerasMenu;
+import io.automation.amazon.shops.electronics.tv.TVAudioCamerasMenu;
 import io.automation.selenide.Page;
 
 public interface Navigation extends Page {
