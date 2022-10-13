@@ -1,4 +1,6 @@
-@ui
+@shop:electronics
+@shop:electronics:televisions
+@scope:regression
 Feature: Television
 
   Scenario: Samsung
