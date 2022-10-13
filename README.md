@@ -1,11 +1,11 @@
-# Clipboard Health 
+# Clipboard Health
 
 ## Automation framework (ATF)
 
-### Quick Automation Start
+### Quick Start
 
 1) Cucumber feature:</br >
-   `modules/amazon/ui/src/test/resources/features/*.feature`
+   `modules/amazon/ui/src/test/resources/features/../*.feature`
 2) Gradle task:</br >
    Open terminal in root project folder
 
@@ -21,6 +21,7 @@ gradle :modules:amazon:ui:{allure_env,allureReport}
 ```
 
 Run and Generate Allure
+
 ```
 gradle :modules:amazon:ui:{clean,tests,allure_env,allureReport} -Dthreads=1 -Dbrowser=chrome -Dbrowser.resolution='1920x1080'
 ```
@@ -47,6 +48,45 @@ gradle :modules:amazon:ui:{clean,tests,allure_env,allureReport} -Dthreads=1 -Dbr
 | `browser.resolution` | `1366x768`                       |                  Set browser resolution                   |
 | `threads`            | `1`                              |      Number of threads (use with parallel execution)      |
 
+### LOCAL
+
+1) Use [Quick start](#Quick-Start)
+2) Or run in terminal
+
+```
+gradle :modules:amazon:ui:{clean,allure_env,tests,allureReport} -Dcucumber.tags='@scope:regression'
+```
+
+### LOCAL + DOCKER SELENOID
+1) Open terminal and Make Checkout `:modules:amazon:ui` subproject
+```
+cd modules/amazon/ui
+```
+
+2) Selenoid
+   - Make docker pull
+```
+docker pull selenoid/vnc_chrome:106.0
+docker pull dumbdumbych/selenium_vnc_chrome_arm64:91.0.b
+docker pull selenoid/video-recorder:7.1
+```
+   - Up selenoid
+```
+docker run -d --name selenoid -p 4444:4444 -v /var/run/docker.sock:/var/run/docker.sock -v ${PWD}/selenoid/config/:/etc/selenoid/:ro -v ${PWD}/selenoid/config/video/:/opt/selenoid/video/ -v ${PWD}/selenoid/config/logs/:/opt/selenoid/logs/ -e TZ=Europe/Minsk -e OVERRIDE_VIDEO_OUTPUT_DIR=${PWD}/selenoid/config/video/ aerokube/selenoid:1.10.8 -log-output-dir /opt/selenoid/logs -video-recorder-image selenoid/video-recorder:7.1 -capture-driver-logs
+```
+
+Health check: http://127.0.0.1:4444/status
+
+3) Open Terminal > Back to Root directory and run command
+```
+gradle :modules:amazon:ui:{clean,allure_env,tests,allureReport} -Dselenoid.enable=true -Dcucumber.tags='@scope:regression'
+```
+
+### DOCKER SELENOID + DOCKER GRADLE
+
+```
+docker run --rm -u gradle -v ${PWD}:/home/gradle/project -w /home/gradle/project --link selenoid gradle:6.9.2-jdk11 gradle :modules:amazon:ui:{clean,allure_env,tests,retry,allureReport} -Dselenoid.enable=true -Dcucumber.tags='@scope:regression'
+```
 
 ## Specification
 
@@ -121,11 +161,3 @@ Web Automation: [Amazon](https://www.amazon.in/)
 9. Assert that  “About this item” section is present and log this section text to console/report.
 
    ![about-this-item.png](docs/about-this-item.png)
-
-## Notes
-
-- [ ] В коде навести красоты
-- [x] Добавить к репорту точечные скриншоты (например, что был кликнут фильтр Samsung)
-- [ ] Добавить возможность отключать точечные скриншоты
-- [ ] Протесть таску retry 
-- [ ] Протестить, чтобы это прогонялось и в докере и снаружи (это тоже быстро)

@@ -3,7 +3,7 @@
     "default": "latest",
     "versions": {
       "latest": {
-        "image": "selenoid/vnc_chrome:105.0",
+        "image": "selenoid/vnc_chrome:106.0",
         "port": "4444",
         "path": "/"
       },
@@ -23,7 +23,7 @@
     "default": "latest",
     "versions": {
       "latest": {
-        "image": "selenoid/vnc_firefox:104.0",
+        "image": "selenoid/vnc_firefox:105.0",
         "port": "4444",
         "path": "/wd/hub"
       },
