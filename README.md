@@ -50,15 +50,15 @@ gradle :modules:amazon:ui:{clean,tests,allure_env,allureReport} -Dthreads=1 -Dbr
 
 ### LOCAL
 
-1) Use [Quick start](#Quick-Start)
-2) Or run in terminal
+1) [Quick start](#Quick-Start)
+2) Open terminal and run from Root directory
 
 ```
 gradle :modules:amazon:ui:{clean,allure_env,tests,allureReport} -Dcucumber.tags='@scope:regression'
 ```
 
 ### LOCAL + DOCKER SELENOID
-1) Open terminal and Make Checkout `:modules:amazon:ui` subproject
+1) Open terminal and go to `:modules:amazon:ui` subproject directory
 ```
 cd modules/amazon/ui
 ```
