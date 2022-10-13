@@ -2,7 +2,7 @@ package io.automation.pages.amazon.shops.electronics;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import io.automation.pages.amazon.index.SortOptions;
+import io.automation.amazon.shops.SortOptions;
 import io.automation.pages.amazon.shops.electronics.tv.TVPage;
 import io.automation.selenide.Browser;
 import io.automation.selenide.Page;

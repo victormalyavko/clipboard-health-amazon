@@ -1,4 +1,4 @@
-package io.automation.pages.amazon.index;
+package io.automation.amazon.shops;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

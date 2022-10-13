@@ -1,9 +1,8 @@
-package io.automation.pages.amazon.index;
+package io.automation.pages.amazon;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
-import io.automation.pages.amazon.SearchPage;
 import io.automation.amazon.shops.Navigation;
 import io.automation.selenide.Page;
 import org.slf4j.Logger;

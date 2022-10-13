@@ -1,6 +1,6 @@
 package io.automation.steps;
 
-import io.automation.pages.amazon.index.IndexPage;
+import io.automation.pages.amazon.IndexPage;
 import io.automation.selenide.Page;
 import io.cucumber.java.en.When;
 
