@@ -1,6 +1,5 @@
 package io.automation.pages.amazon.shops.electronics;
 
-import com.codeborne.selenide.As;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import io.automation.pages.amazon.shops.electronics.tv.TVPage;

@@ -10,7 +10,8 @@ public enum ConditionSuite {
     APPEARS("appears", Condition.appear),
     DISAPPEAR("disappear", Condition.disappear),
     DISAPPEARS("disappears", Condition.disappear),
-    CLICKABLE("clickable", Condition.and("Clickable", Condition.appear, Condition.enabled)),
+    CLICKABLE("clickable", Condition.interactable),
+    INTERACTABLE("interactable", Condition.interactable),
     EXIST("exist", Condition.exist),
     HIDDEN("hidden", Condition.hidden);
 

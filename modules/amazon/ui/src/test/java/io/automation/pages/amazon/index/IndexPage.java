@@ -1,9 +1,10 @@
-package io.automation.pages.amazon;
+package io.automation.pages.amazon.index;
 
-import com.codeborne.selenide.As;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import io.automation.pages.amazon.SearchPage;
+import io.automation.pages.amazon.shops.Navigation;
 import io.automation.selenide.Page;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,7 +12,7 @@ import org.slf4j.LoggerFactory;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 
-public class IndexPage implements Page {
+public class IndexPage implements Page, Navigation {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(IndexPage.class);
 
@@ -24,12 +25,9 @@ public class IndexPage implements Page {
         LOGGER.info("Index page has been opened");
     }
 
-    public <PageObjectClass> PageObjectClass openTargetCategory(String category, String target) {
-        SelenideElement category_shop = $x(String.format("//li/a/div[normalize-space(.)='%s']/parent::a", category)).as(category);
-        SelenideElement category_target = $x(String.format("//a[normalize-space(.)='%s']", target)).as(target);
+    public <PageObjectClass> PageObjectClass openTargetElectronicCategory(String shop, String category) {
         clickWhenEnabled(NAV_MAIN);
-        clickWhenEnabled(category_shop);
-        clickWhenEnabled(category_target);
+        selectTargetElectronicCategory(shop, category);
         return Selenide.page();
     }
 
