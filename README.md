@@ -81,7 +81,7 @@ Health check: http://127.0.0.1:4444/status
 
 3) Open Terminal > Back to Root directory and run command
 ```
-gradle :modules:amazon:ui:{clean,allure_env,tests,allureReport} -Dselenoid.enable=true -Dselenoid.remote=http://selenoid:4444/wd/hub -Dcucumber.tags='@scope:regression'
+gradle :modules:amazon:ui:{clean,allure_env,tests,allureReport} -Dselenoid.enable=true -Dcucumber.tags='@scope:regression'
 ```
 
 ### DOCKER SELENOID + DOCKER GRADLE
@@ -89,7 +89,7 @@ gradle :modules:amazon:ui:{clean,allure_env,tests,allureReport} -Dselenoid.enabl
 1) [Up Selenoid](#local--docker-selenoid)
 2) Open terminal and run command from Root directory
 ```
-docker run --rm -u gradle -v ${PWD}:/home/gradle/project -w /home/gradle/project --link selenoid gradle:6.9.2-jdk11 gradle :modules:amazon:ui:{clean,allure_env,tests,retry,allureReport} -Dselenoid.enable=true -Dcucumber.tags='@scope:regression'
+docker run --rm -u gradle -v ${PWD}:/home/gradle/project -w /home/gradle/project --link selenoid gradle:6.9.2-jdk11 gradle :modules:amazon:ui:{clean,allure_env,tests,retry,allureReport} -Dselenoid.enable=true -Dselenoid.remote=http://selenoid:4444/wd/hub -Dcucumber.tags='@scope:regression'
 ```
 
 ## Specification
