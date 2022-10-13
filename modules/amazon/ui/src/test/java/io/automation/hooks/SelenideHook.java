@@ -225,9 +225,8 @@ public class SelenideHook {
         Configuration.browserCapabilities = capabilities;
         Configuration.pageLoadTimeout = TimeUnit.MILLISECONDS.convert(Durations.QUARTER_TO_MIN, TimeUnit.SECONDS);
         Configuration.timeout = TimeUnit.MILLISECONDS.convert(Durations.QUARTER_OF_MIN, TimeUnit.SECONDS);
-        Configuration.fileDownload = FileDownloadMode.PROXY;
-        ;
-        Configuration.proxyEnabled = true;
+//        Configuration.fileDownload = FileDownloadMode.PROXY;
+//        Configuration.proxyEnabled = true;
         SelenideLogger.addListener("allure", new AllureSelenide());
     }
 
