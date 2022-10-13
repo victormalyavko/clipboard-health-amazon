@@ -84,6 +84,8 @@ gradle :modules:amazon:ui:{clean,allure_env,tests,allureReport} -Dselenoid.enabl
 
 ### DOCKER SELENOID + DOCKER GRADLE
 
+1) [Up Selenoid](#local--docker-selenoid)
+2) Open terminal and run command from Root directory
 ```
 docker run --rm -u gradle -v ${PWD}:/home/gradle/project -w /home/gradle/project --link selenoid gradle:6.9.2-jdk11 gradle :modules:amazon:ui:{clean,allure_env,tests,retry,allureReport} -Dselenoid.enable=true -Dcucumber.tags='@scope:regression'
 ```
