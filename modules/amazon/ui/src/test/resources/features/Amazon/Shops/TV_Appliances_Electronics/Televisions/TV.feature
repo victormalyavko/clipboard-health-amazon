@@ -1,9 +1,10 @@
 @shop:electronics
 @shop:electronics:televisions
 @scope:regression
-Feature: Television
+Feature: Functionality of Televisions Page
 
-  Scenario: Samsung
+  @tv:samsung
+  Scenario: Select 2nd TV with brand SAMSUNG
     Given Open "https://www.amazon.in"
     When I select the category "TV, Appliances, Electronics" and click shop "Televisions"
     Then Electronics page should be opened
