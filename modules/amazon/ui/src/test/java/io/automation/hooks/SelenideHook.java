@@ -1,15 +1,12 @@
 package io.automation.hooks;
 
-import com.browserup.bup.BrowserUpProxy;
-import com.browserup.bup.proxy.CaptureType;
 import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.FileDownloadMode;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.automation.selenide.Browser;
 import io.automation.selenide.Durations;
-import io.automation.utils.FileUtils;
+import io.automation.utils.AllureUtils;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
@@ -21,15 +18,10 @@ import org.apache.commons.lang3.time.StopWatch;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.HasCapabilities;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.ie.InternetExplorerOptions;
-import org.openqa.selenium.logging.LogEntries;
-import org.openqa.selenium.logging.LogEntry;
 import org.openqa.selenium.logging.LogType;
 import org.openqa.selenium.logging.LoggingPreferences;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -37,12 +29,10 @@ import org.openqa.selenium.safari.SafariOptions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.Duration;
-import java.util.Date;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
@@ -63,17 +53,6 @@ public class SelenideHook {
             return Optional.of(Files.readAllBytes(Paths.get("selenoid/config/video/" + videoName)));
         } catch (IOException e) {
             LOGGER.warn("Could not get video", e);
-            return Optional.empty();
-        }
-    }
-
-    private Optional<byte[]> getScreenshotBytes() {
-        try {
-            return WebDriverRunner.hasWebDriverStarted()
-                    ? Optional.of(((TakesScreenshot) WebDriverRunner.getWebDriver()).getScreenshotAs(OutputType.BYTES))
-                    : Optional.empty();
-        } catch (WebDriverException e) {
-            LOGGER.warn("Could not get screen shot", e);
             return Optional.empty();
         }
     }
@@ -236,18 +215,16 @@ public class SelenideHook {
         printBrowserSettings();
     }
 
-    @After(order = 3)
-    public void closeBrowser() {
-        Browser.closeBrowser();
-        LOGGER.info("Browser has been closed");
-    }
-
     @After(order = 2)
     public void saveLogs(Scenario scenario) {
         Allure.addAttachment("URL", Browser.getCurrentUrl());
-        getScreenshotBytes()
-                .ifPresent(bytes -> Allure.getLifecycle()
-                        .addAttachment("Screenshot", "image/png", "png", bytes));
+        AllureUtils.attachScreenshot();;
         attachVideo(scenario);
+    }
+
+    @After(order = 1)
+    public void closeBrowser() {
+        Browser.closeBrowser();
+        LOGGER.info("Browser has been closed");
     }
 }

@@ -15,13 +15,13 @@ import static com.codeborne.selenide.Selenide.$x;
 public class PageSteps {
     private static final CorePage PAGE = new CorePage();
 
-    @Given("^Open page \"([^\"]*)\"$")
+    @Given("^Open \"([^\"]*)\"$")
     public void openPage(String url) {
         Browser.open(url);
     }
 
     @Given("^Go to \"([^\"]*)\"$")
-    public void goToUrl(String url) {
+    public void openUrl(String url) {
         Browser.open(url);
     }
 

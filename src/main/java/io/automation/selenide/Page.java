@@ -5,6 +5,8 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import io.automation.utils.AllureUtils;
+import io.qameta.allure.Allure;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
@@ -37,14 +39,6 @@ public interface Page {
 
     static ElementsCollection assertCondition(ElementsCollection elements, CollectionCondition condition, Duration duration) {
         return elements.shouldBe(condition, duration);
-    }
-
-    default void scrollToCenterSmoothly(SelenideElement element) {
-        element.scrollIntoView("{behavior: \"smooth\", block: \"center\", inline: \"center\"}");
-    }
-
-    default void scrollToWhenAvailable(SelenideElement element) {
-        scrollToCenterSmoothly(element.shouldBe(exist));
     }
 
     default void clickWhenEnabled(SelenideElement element) {

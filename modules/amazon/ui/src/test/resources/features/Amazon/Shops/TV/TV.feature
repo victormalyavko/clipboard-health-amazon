@@ -4,7 +4,7 @@
 Feature: Television
 
   Scenario: Samsung
-    Given Go to "https://www.amazon.in"
+    Given Open "https://www.amazon.in"
     When I select the category "TV, Appliances, Electronics" and click shop "Televisions"
     Then Electronics page should be opened
     When I filter by brand "Samsung" on Electronics page
