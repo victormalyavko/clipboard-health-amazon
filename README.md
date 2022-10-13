@@ -48,6 +48,8 @@ gradle :modules:amazon:ui:{clean,tests,allure_env,allureReport} -Dthreads=1 -Dbr
 | `browser.resolution` | `1366x768`                       |                  Set browser resolution                   |
 | `threads`            | `1`                              |      Number of threads (use with parallel execution)      |
 
+## AMAZON
+
 ### LOCAL
 
 1) [Quick start](#Quick-Start)
