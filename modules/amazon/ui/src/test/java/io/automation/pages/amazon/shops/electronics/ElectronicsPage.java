@@ -2,6 +2,7 @@ package io.automation.pages.amazon.shops.electronics;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import io.automation.pages.amazon.index.SortOptions;
 import io.automation.pages.amazon.shops.electronics.tv.TVPage;
 import io.automation.selenide.Browser;
 import io.automation.selenide.Page;
@@ -17,7 +18,7 @@ public class ElectronicsPage implements Page {
 
     public static SelenideElement ELECTRONICS_IMG = $x("//span[@class='nav-a-content']/img[@alt='Electronics']").as("Electronics IMG");
 
-    public static SelenideElement DROPDOWN_FEATURED = $x("//form[@action='/s']/span[contains(@class,'dropdown')]/select").as("FEATURED DROPDOWN");
+    public static SelenideElement SORTING_DROPDOWN = $x("//form[@action='/s']/span[contains(@class,'dropdown')]/select").as("SORTING DROPDOWN");
     public static SelenideElement FILTER = $("#s-refinements").as("FILTER");
 
     public ElectronicsPage() {
@@ -34,7 +35,7 @@ public class ElectronicsPage implements Page {
     }
 
     public ElectronicsPage sortByOption(String option) {
-        selectByVisibleText(DROPDOWN_FEATURED, option);
+        selectByVisibleText(SORTING_DROPDOWN, SortOptions.getOption(option));
         return Page.at(ElectronicsPage.class);
     }
 
