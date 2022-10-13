@@ -81,7 +81,7 @@ Health check: http://127.0.0.1:4444/status
 
 3) Open Terminal > Back to Root directory and run command
 ```
-gradle :modules:amazon:ui:{clean,allure_env,tests,allureReport} -Dselenoid.enable=true -Dcucumber.tags='@scope:regression'
+gradle :modules:amazon:ui:{clean,allure_env,tests,allureReport} -Dselenoid.enable=true -Dselenoid.remote=http://selenoid:4444/wd/hub -Dcucumber.tags='@scope:regression'
 ```
 
 ### DOCKER SELENOID + DOCKER GRADLE
