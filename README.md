@@ -1,5 +1,19 @@
 # Clipboard Health
 
+## OVERVIEW
+
+- [Project Description](#Automation-framework-(ATF))
+    - [Quick Start](#Quick-Start)
+    - [Dependencies](#Dependencies)
+    - [Project default VM options](#Project-default-global-variables-(VM options))
+- [AMAZON](#AMAZON)
+    - [Specification](#Specification)
+    - [Checklist](#Checklist-of-what-we-expect-from-this-assignment-?)
+    - [Scenario](#Steps)
+    - [GUIDE - LOCAL RUN](#LOCAL)
+    - [GUIDE - LOCAL + DOCKER SELENOID](#LOCAL--DOCKER-SELENOID)
+    - [GUIDE - DOCKER SELENOID + DOCKER GRADLE](#DOCKER-SELENOID---DOCKER-GRADLE)
+
 ## Automation framework (ATF)
 
 ### Quick Start
@@ -60,19 +74,24 @@ gradle :modules:amazon:ui:{clean,allure_env,tests,allureReport} -Dcucumber.tags=
 ```
 
 ### LOCAL + DOCKER SELENOID
+
 1) Open terminal and go to `:modules:amazon:ui` subproject directory
+
 ```
 cd modules/amazon/ui
 ```
 
 2) Selenoid
-   - Make docker pull
+    - Make docker pull
+
 ```
 docker pull selenoid/vnc_chrome:106.0
 docker pull dumbdumbych/selenium_vnc_chrome_arm64:91.0.b
 docker pull selenoid/video-recorder:7.1
 ```
-   - Up selenoid
+
+- Up selenoid
+
 ```
 docker run -d --name selenoid -p 4444:4444 -v /var/run/docker.sock:/var/run/docker.sock -v ${PWD}/selenoid/config/:/etc/selenoid/:ro -v ${PWD}/selenoid/config/video/:/opt/selenoid/video/ -v ${PWD}/selenoid/config/logs/:/opt/selenoid/logs/ -e TZ=Europe/Minsk -e OVERRIDE_VIDEO_OUTPUT_DIR=${PWD}/selenoid/config/video/ aerokube/selenoid:1.10.8 -log-output-dir /opt/selenoid/logs -video-recorder-image selenoid/video-recorder:7.1 -capture-driver-logs
 ```
@@ -80,6 +99,7 @@ docker run -d --name selenoid -p 4444:4444 -v /var/run/docker.sock:/var/run/dock
 Health check: http://127.0.0.1:4444/status
 
 3) Open Terminal > Back to Root directory and run command
+
 ```
 gradle :modules:amazon:ui:{clean,allure_env,tests,allureReport} -Dselenoid.enable=true -Dcucumber.tags='@scope:regression'
 ```
@@ -88,6 +108,7 @@ gradle :modules:amazon:ui:{clean,allure_env,tests,allureReport} -Dselenoid.enabl
 
 1) [Up Selenoid](#local--docker-selenoid)
 2) Open terminal and run command from Root directory
+
 ```
 docker run --rm -u gradle -v ${PWD}:/home/gradle/project -w /home/gradle/project --link selenoid gradle:6.9.2-jdk11 gradle :modules:amazon:ui:{clean,allure_env,tests,retry,allureReport} -Dselenoid.enable=true -Dselenoid.remote=http://selenoid:4444/wd/hub -Dcucumber.tags='@scope:regression'
 ```
@@ -102,13 +123,18 @@ In the assignment, we are looking to see your design and coding skills to see ho
 within the quality department.
 
 In this exercise, we provide a single automation problem to solve, and the goal is to see if you can design a clean UI
-automation solution around it. The only requirement is to `use Java` as the core programming language (`Since this is the language of choice that we have decided to go forward with. It also makes it possible for us to properly review the assignments since we are not experts in all the different programming languages that can be used to do automation.`).
+automation solution around it. The only requirement is to `use Java` as the core programming
+language (`Since this is the language of choice that we have decided to go forward with. It also makes it possible for us to properly review the assignments since we are not experts in all the different programming languages that can be used to do automation.`)
+.
 
 You can use any automation tool/library of your choice - we like selenium but feel free to take your pick.
 
-If you like, we also provide you a base test framework so that you can directly get started writing tests, rather than setting up framework. [This framework]
+If you like, we also provide you a base test framework so that you can directly get started writing tests, rather than
+setting up framework. [This framework]
 
-Note: Base (vanilla) framework is to help you get things faster - “if you want to”. However we realize, sometimes you may like to use your own tool set, in which case you are free to do so - with no marks deducted - so feel free to pickup whatever you like :).
+Note: Base (vanilla) framework is to help you get things faster - “if you want to”. However we realize, sometimes you
+may like to use your own tool set, in which case you are free to do so - with no marks deducted - so feel free to pickup
+whatever you like :).
 
 > One request, don’t use any low code or licensed automation tools.
 
@@ -162,6 +188,6 @@ Web Automation: [Amazon](https://www.amazon.in/)
    ![sort-price-high-to-low.png](docs/sort-price-high-to-low.png)
 7. Click on the second highest priced item (whatever that maybe at the time of automating).
 8. Switch the Window
-9. Assert that  “About this item” section is present and log this section text to console/report.
+9. Assert that “About this item” section is present and log this section text to console/report.
 
    ![about-this-item.png](docs/about-this-item.png)
