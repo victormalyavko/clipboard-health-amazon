@@ -2,17 +2,17 @@
 
 ## OVERVIEW
 
-- [Project Description](#Automation-framework-(ATF))
+- [Project Description](#Automation-framework-ATF)
     - [Quick Start](#Quick-Start)
     - [Dependencies](#Dependencies)
-    - [Project default VM options](#Project-default-global-variables-(VM options))
+    - [Project default VM options](#Project-default-global-variables-VM-options)
 - [AMAZON](#AMAZON)
     - [Specification](#Specification)
-    - [Checklist](#Checklist-of-what-we-expect-from-this-assignment-?)
+    - [Checklist](#checklist-of-what-we-expect-from-this-assignment-)
     - [Scenario](#Steps)
     - [GUIDE - LOCAL RUN](#LOCAL)
     - [GUIDE - LOCAL + DOCKER SELENOID](#LOCAL--DOCKER-SELENOID)
-    - [GUIDE - DOCKER SELENOID + DOCKER GRADLE](#DOCKER-SELENOID---DOCKER-GRADLE)
+    - [GUIDE - DOCKER SELENOID + DOCKER GRADLE](#DOCKER-SELENOID--DOCKER-GRADLE)
 
 ## Automation framework (ATF)
 
